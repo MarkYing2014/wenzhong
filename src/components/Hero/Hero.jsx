@@ -15,7 +15,7 @@ const Hero = () => {
             className="text-center md:text-left space-y-6"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brown-900 leading-tight">
-              探索咖啡的
+              探索文种咖啡的
               <br />
               <span className="text-primary">美妙世界</span>
             </h1>
