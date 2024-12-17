@@ -1,6 +1,6 @@
 import React from "react";
 import { FaMapMarkerAlt, FaPhone, FaClock } from "react-icons/fa";
-import WorldMap from "../../assets/world-map.png";
+import worldMapImg from "../../assets/world-map.png";
 import { motion } from "framer-motion";
 
 const LocationCard = ({ name, address, phone, hours }) => (
@@ -109,7 +109,7 @@ const WhereToBuy = () => {
            whileInView={{opacity: 1, scale: 1.2}}
            transition={{duration: 1, type: "spring", stiffness: 100, damping: 10,delay: 1}}
            whileHover={{scale: 1.2}}
-           src={WorldMap} alt="Where to Buy" className="w-full sm:w-[500px] mx-auto" />
+           src={worldMapImg} alt="Where to Buy" className="w-full sm:w-[500px] mx-auto" />
      
         </motion.div>
 

@@ -1,17 +1,16 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
-import BgImage from "../../assets/bg-slate.png";
-import blackcoffee from "../../assets/black.png";
+import bgSlate from "../../assets/bg-slate.png";
+import blackImg from "../../assets/black.png";
 import { motion } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const bgImage = {
-  backgroundImage: `url(${BgImage})`,
+  backgroundImage: `url(${bgSlate})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
 };
-
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -106,7 +105,7 @@ const Hero = () => {
                 initial={{ opacity: 0,scale: 0 }}
                 animate={{ opacity: 1,scale: 1 }}
                 transition={{type : "spring", stiffness: 100, damping: 10, duration: 1 }}
-                src={blackcoffee}
+                src={blackImg}
                 alt="Coffee"
                 className="relative z-40 h-[400px] w-[400px] md:h-[400px] md:w-[500px] lg:h-[700px] lg:w-[700px] img-shadow"
               />
