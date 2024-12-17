@@ -1,6 +1,6 @@
 import React from "react";
 import { FaApple, FaGooglePlay } from "react-icons/fa";
-import AppImg from "../../assets/app/app.png";
+import AppImg from "../../assets/coffee/coffee3.png";
 import { motion } from "framer-motion";
 
 const AppBanner = () => {

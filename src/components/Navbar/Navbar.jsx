@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +23,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-            <img src={Logo} alt="Logo" className="h-10 w-auto" />
+            <h1 className="text-xl font-bold text-primary">文种<span className="text-brown-800">咖啡</span></h1>
           </motion.div>
 
           {/* Desktop Menu */}
