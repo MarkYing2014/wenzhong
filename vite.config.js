@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -16,9 +16,14 @@ export default defineConfig({
     assetsDir: 'assets',
     rollupOptions: {
       output: {
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash][extname]'
+        chunkFileNames: 'js/[name]-[hash].js',
+        entryFileNames: 'js/[name]-[hash].js',
+        assetFileNames: ({name}) => {
+          if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')){
+            return 'images/[name]-[hash][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
       }
     }
   }
