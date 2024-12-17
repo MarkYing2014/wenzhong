@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import blackImg from "../../assets/black.png";
 
 const Hero = () => {
   return (
@@ -48,7 +49,7 @@ const Hero = () => {
           >
             <div className="relative w-full max-w-[500px]">
               <img
-                src="/images/hero.png"
+                src={blackImg}
                 alt="Coffee Cup"
                 className="w-full h-auto object-cover transform hover:scale-105 transition duration-300"
               />
