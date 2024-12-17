@@ -1,136 +1,90 @@
 import React from "react";
-import { FaMapMarkerAlt, FaPhone, FaClock } from "react-icons/fa";
-import worldMapImg from "../../assets/world-map.png";
 import { motion } from "framer-motion";
-
-const LocationCard = ({ name, address, phone, hours }) => (
-  <div className="bg-brown-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-    <h3 className="text-xl font-semibold mb-4 flex items-center text-brown-900">
-      <FaMapMarkerAlt className="text-primary mr-2" />
-      {name}
-    </h3>
-    <p className="text-brown-700 mb-2">{address}</p>
-    <p className="text-brown-700 flex items-center mb-2">
-      <FaPhone className="text-secondary mr-2" />
-      {phone}
-    </p>
-    <p className="text-brown-700 flex items-center">
-      <FaClock className="text-secondary mr-2" />
-      {hours}
-    </p>
-  </div>
-);
-
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, y: 0 ,
-    transition: {
-      duration: 0.5,
-      type: "spring",
-      stiffness: 150,
-      damping: 10,
-      ease: "easeOut",
-    }
-    },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.2,
-      ease: "easeOut",
-    }
-    },
-};
+import Map from "../../assets/world-map.png";
 
 const WhereToBuy = () => {
   const locations = [
     {
-      name: "文种咖啡(东城)",
-      address: "123 文种路,东城区",
-      phone: "(123) 456-7890",
-      hours: "Mon-Sun: 7AM - 8PM"
+      id: 1,
+      city: "北京",
+      address: "朝阳区三里屯路19号",
+      phone: "+86 10 8888 8888"
     },
     {
-      name: "文种咖啡(西城)",
-      address: "456 文种路,西城区",
-      phone: "(987) 654-3210",
-      hours: "Mon-Sun: 7AM - 8PM"
+      id: 2,
+      city: "上海",
+      address: "静安区南京西路1788号",
+      phone: "+86 21 6888 8888"
+    },
+    {
+      id: 3,
+      city: "广州",
+      address: "天河区天河路208号",
+      phone: "+86 20 3888 8888"
+    },
+    {
+      id: 4,
+      city: "深圳",
+      address: "福田区深南大道1088号",
+      phone: "+86 755 8888 8888"
     }
-   
-    
   ];
 
   return (
-    <motion.div variants={containerVariants}
-    initial="hidden"
-    whileInView={"visible"}
-    viewport={{ amount: 0.8 }}
-     className="container my-36">
-       <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 place-items-center">
-        <div>
+    <div className="container mx-auto px-4 py-16 md:py-24">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brown-900 mb-4">
+          门店位置
+        </h2>
+        <p className="text-sm md:text-base lg:text-lg text-brown-600 max-w-2xl mx-auto">
+          我们在全国各大城市都设有门店，欢迎您前来品尝我们的咖啡
+        </p>
+      </motion.div>
 
-        <motion.h2
-         variants={cardVariants}
-         initial="hidden"
-         whileInView={"visible"}
-         viewport={{ amount: 0.8 }}
-         className="text-3xl font-bold text-center mb-4 text-brown-900">哪里可以品尝</motion.h2>
-        <motion.p variants={cardVariants} 
-         initial="hidden"
-         whileInView={"visible"}
-         viewport={{ amount: 0.8 }}
-         className="text-center text-brown-700 mb-12">光临我们的咖啡店，享受优质咖啡和独特的咖啡体验</motion.p>
-
-         
-        <motion.div variants={cardVariants} 
-         initial="hidden"
-         whileInView={"visible"}
-         viewport={{ amount: 0.8 }}
-           className="grid grid-cols-2 gap-8">
-        {locations.map((location, index) => (
-            <LocationCard key={index} {...location} />
-          ))}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* Map Image */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <img
+            src={Map}
+            alt="Store Locations Map"
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brown-900/20 to-transparent rounded-lg"></div>
         </motion.div>
 
-
-        </div>
-
-        <motion.div variants={cardVariants} 
-        initial="hidden" whileInView={"visible"} viewport={{ amount: 0.8 }} 
-        className="col-span-2">
-          <motion.img
-           variants={cardVariants}
-           initial={{opacity: 0, scale: 0.6}}
-           whileInView={{opacity: 1, scale: 1.2}}
-           transition={{duration: 1, type: "spring", stiffness: 100, damping: 10,delay: 1}}
-           whileHover={{scale: 1.2}}
-           src={worldMapImg} alt="Where to Buy" className="w-full sm:w-[500px] mx-auto" />
-     
-        </motion.div>
-
-
-       
-
-       </div>
-
-
-    </motion.div>
-    /*{/* <section className="py-16 bg-accent/20">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-4 text-brown-900">Where to Find Us</h2>
-        <p className="text-center text-brown-700 mb-12">Visit our stores and experience the perfect cup of coffee</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {locations.map((location, index) => (
-            <LocationCard key={index} {...location} />
+        {/* Locations List */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+          {locations.map((location) => (
+            <motion.div
+              key={location.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: location.id * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-xl font-semibold text-brown-900 mb-2">
+                {location.city}
+              </h3>
+              <p className="text-brown-600 text-sm mb-2">{location.address}</p>
+              <p className="text-primary font-medium text-sm">{location.phone}</p>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>*/
+    </div>
   );
 };
 
