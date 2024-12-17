@@ -1,170 +1,65 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
-import bgSlate from "../../assets/bg-slate.png";
-import blackImg from "../../assets/black.png";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
-
-const bgImage = {
-  backgroundImage: `url(${bgSlate})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, y: 0 ,
-    transition: {
-      duration: 0.5,
-      type: "spring",
-      stiffness: 150,
-      damping: 10,
-      ease: "easeOut",
-    }
-    },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.2,
-      ease: "easeOut",
-    }
-    },
-};
-
-  
-
-  
+import HeroImg from "../../assets/hero/hero.png";
 
 const Hero = () => {
-
-  const [sidebar, setsidebar] = React.useState(false);
-
-
   return (
-    <motion.main  
-    style={bgImage}
-    initial="hidden"
-    whileInView={"visible"}
-    viewport={{ amount: 0.8 }}
-    variants={cardVariants} 
-    >
-      <motion.section 
-      variants={containerVariants}
-      initial="hidden"
-      whileInView={"visible"}
-      viewport={{ amount: 0.8 }}
-      className="relative min-h-[750px] w-full">
-        <div className="container">
-          {/* Navbar */}
-          <Navbar sidebar={sidebar} setsidebar={setsidebar} />
-          {/* Hero Content */}
-          <div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView={"visible"}
-          viewport={{ amount: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 place-items-center min-h-[750px]">
-            {/* Add your hero content here */}
-            <div className="text-center md:text-left md:pl-12 space-y-28">
-              <motion.h1
-                initial={{ opacity: 0,y: -100 }}
-                animate={{ opacity: 1,y: 0 }}
-                transition={{ duration: 1,type: "spring", stiffness: 100, damping: 10 }}
-                className="text-4xl md:text-6xl font-bold mb-4 text-lightOrange text-shadow"
-              >
-                欢迎来到文种咖啡
-              </motion.h1>    
-              <motion.p
-                initial={{ opacity: 0,y: -100 }}
-                animate={{ opacity: 1,y: 0 }}
-                transition={{type: "spring", stiffness: 100, damping: 10, duration: 1 }}
-                className="text-lg md:text-xl opacity-80 mb-8 text-brown-100 text-shadow"
-              >
-                欢迎来到文种咖啡，这里是一家专业的咖啡店，我们的优质咖啡和独特的咖啡体验将为您提供无与伦比的滋味和享受。
-              </motion.p>
-
+    <div className="min-h-screen relative bg-gradient-to-b from-brown-50 to-brown-100">
+      <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center md:text-left space-y-6"
+          >
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brown-900 leading-tight">
+              探索咖啡的
+              <br />
+              <span className="text-primary">美妙世界</span>
+            </h1>
+            <p className="text-sm md:text-base lg:text-lg text-brown-600 max-w-lg mx-auto md:mx-0">
+              我们精心挑选来自世界各地的优质咖啡豆，为您带来独特的咖啡体验。每一杯都是匠心之作，让您品味生活的美好时刻。
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <motion.button
-                initial={{ opacity: 0,y: -100 }}
-                animate={{ opacity: 1,y: 0 }}
-                transition={{type: "spring", stiffness: 100, damping: 10, duration: 1 }}
-                className="bg-primary text-lightOrange px-6 py-3 rounded-md hover:bg-primaryDark "
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary text-white px-8 py-3 rounded-full hover:bg-brown-700 transition duration-300"
               >
-                选购开始
+                立即购买
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-primary border-2 border-primary px-8 py-3 rounded-full hover:bg-brown-50 transition duration-300"
+              >
+                了解更多
               </motion.button>
             </div>
+          </motion.div>
 
-            {/* Image */}
-            <div className="relative">
-              <motion.img
-                initial={{ opacity: 0,scale: 0 }}
-                animate={{ opacity: 1,scale: 1 }}
-                transition={{type : "spring", stiffness: 100, damping: 10, duration: 1 }}
-                src={blackImg}
-                alt="Coffee"
-                className="relative z-40 h-[400px] w-[400px] md:h-[400px] md:w-[500px] lg:h-[700px] lg:w-[700px] img-shadow"
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative flex justify-center items-center"
+          >
+            <div className="relative w-full max-w-[500px]">
+              <img
+                src={HeroImg}
+                alt="Coffee Cup"
+                className="w-full h-auto object-cover transform hover:scale-105 transition duration-300"
               />
+              {/* Decorative elements */}
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brown-200 rounded-full opacity-20 blur-3xl"></div>
             </div>
-            {/* Add more content here */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, type: "spring", stiffness: 100, damping: 10 }}
-              className="h-[180px] w-[180px] absolute top-24 right-100 border-[20px] rounded-full z-10 border-primary"
-            ></motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, type: "spring", stiffness: 100, damping: 10 }}
-              className="text-[140px] scale-150 font-bold text-dark-gray/40 leading-none z-0"
-            >
-              Black Tumbler
-            </motion.div>
-          </div>
+          </motion.div>
         </div>
-        {/* Add more hero content here */}
-
-        {
-          sidebar && (
-            <motion.div initial={{ opacity: 0,y: -100 }} 
-            animate={{ opacity: 1,y: 0 }} 
-            transition={{ duration: 1,type: "spring", stiffness: 100, damping: 10 }}
-             style={{ position: "absolute", top: 0, right: 0, width: "150px", height: "100%", background: "linear-gradient(to right, rgba(139,69,19,0.7), rgba(139,69,19,1))", backdropFilter: "blur(0.5rem)", zIndex: 10 }}>
-            <div className="flex flex-col items-center justify-center h-full w-full">
-           
-            
-            <div className= "flex flex-col justify-center items-center gap-6 text-white">
-  
-              <div style={{ width: "1px", height: "70px", backgroundColor: "white" }}></div>
-  
-              <div className="inline-block p-2 rounded-full cursor-pointer border-white border">
-                <FaFacebookF  color="#3b5998" className="text-2xl"   />
-              </div>
-              <div className="inline-block p-2 rounded-full cursor-pointer border-white border">
-                <FaTwitter color="#1da1f2" className="text-2xl" />
-              </div>
-              <div className="inline-block p-2 rounded-full cursor-pointer border-white border">
-                <FaInstagram color="#e1306c" className="text-2xl" />
-              </div>
-              <div className="inline-block p-2 rounded-full cursor-pointer border-white border">
-                <FaLinkedin color="#0077b5" />
-              </div>
-  
-              <div style={{ width: "1px", height: "70px", backgroundColor: "white" }}></div>
-             
-            </div>
-          </div>
-          </motion.div> 
-          )
-        }
-        
-      </motion.section>    
-    </motion.main>
+      </div>
+    </div>
   );
 };
 
